@@ -1,15 +1,46 @@
 package sg.edu.nus.iss;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
+    
+
     // write Java console program that allows user to add, remove
     // & list the contents of the shopping cart
     // store the shopping cart with appropriate collection type
 
     public static void main(String[] args) {
+
+        // ws3 task 1
+        // assign cartDb in String[] args as a variable directory
+        // cartDb will be used to store user's cart
+        // if the program is started without specifying cart database directory
+        // the program will use default directory called db
+
+        String directory = "";
+
+        if (args.length == 0){
+            directory = "db";
+        } else {
+            directory = args[0];
+    
+        }
+
+        // Create directory called "db"/Cartdb
+        // If this directory does not exist, create it.
+
+        File file = new File(directory);
+       
+        if (!file.exists()){
+            file.mkdir();
+            System.out.println("file doesnt exist");
+        } else {
+            System.out.println("file exists");
+        }
+
 
         // print welcome statement
         System.out.println("Welcome to Cart");
@@ -34,6 +65,16 @@ public class App {
             System.out.print("> "); 
             command = scan.nextLine();
 
+            if (command.equals("users")){
+                for (String user : file.list()){
+                System.out.println(user);
+            }
+            }
+
+            if (command.startsWith("login")){
+                Scanner scanLogin = new Scanner(command.substring(6));
+
+            }
             
             if (command.equals("list") && shoppingList.isEmpty()){
                 System.out.println("Shopping Cart is Empty!");
