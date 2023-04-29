@@ -74,6 +74,17 @@ public class App {
             if (command.startsWith("login")){
                 Scanner scanLogin = new Scanner(command.substring(6));
 
+                while (scanLogin.hasNext()){
+                    String userLogin = "";
+                    
+                    if (directory.contains(userLogin)){
+
+                        System.out.println("welcome back " + userLogin);
+                    } else {
+                        file.mkdir();
+                        System.out.println(userLogin + " does not exist, and has been created!");
+                    }
+                }
             }
             
             if (command.equals("list") && shoppingList.isEmpty()){
